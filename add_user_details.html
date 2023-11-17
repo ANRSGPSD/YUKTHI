@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User Details</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
+
+</head>
+<body>
+    <h2>Add User Details</h2>
+    <form method="post" action="{% url 'add_user_details' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
