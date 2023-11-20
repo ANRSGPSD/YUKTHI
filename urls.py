@@ -1,8 +1,7 @@
-# yourapp/urls.py
 from django.urls import path
-from .views import upload_student_files
+from . import views
+from .views import add_semester
 
 urlpatterns = [
-    path('upload/', upload_student_files, name='upload_student_files'),
-    
+    path('add_semester/', views.add_semester, name='add_semester'),
 ]
