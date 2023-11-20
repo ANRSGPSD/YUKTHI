@@ -1,0 +1,24 @@
+<!-- add_semester.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Academic details</title>
+    
+    <!-- <style>
+            *{background-color: rgb(120, 226, 168);}</style> -->
+            
+            
+</head>
+<body>
+    <h1>Academic details</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
