@@ -1,20 +1,16 @@
-# yourapp/views.py
-from django.shortcuts import render, redirect,get_object_or_404
-from .forms import StudentForm
-from .models import Student
-from django.http import HttpResponse
 
 
-def upload_student_files(request):
+# Create your views here.
+from django.shortcuts import render,redirect,reverse
+from .forms import SemesterForm
+
+def add_semester(request):
     if request.method == 'POST':
-        form = StudentForm(request.POST, request.FILES)
+        form = SemesterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('upload_student_files')
+            form.save()  # Save the form data to the database
+            return render(request,'success.html') # Redirect to a success page
     else:
-        form = StudentForm()
+        form = SemesterForm()
 
-    files = Student.objects.all()
-    return render(request, 'upload_student_files.html', {'form': form, 'files': files})
-# yourapp/views.py (Continued)
-
+    return render(request, 'add_semester.html', {'form': form})
