@@ -1,9 +1,14 @@
-# yourapp/models.py
+
+
+# Create your models here.
 from django.db import models
 
-class Student(models.Model):
-    tenth_mark_card = models.FileField(upload_to='tenth_marks_card/')
-    twelfth_mark_card = models.FileField(upload_to='twelfth_marks_card/')
-    aadhar_card = models.FileField(upload_to='aadhar_card/')
-    admission_order = models.FileField(upload_to='admission_order/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
+class Semester(models.Model):
+    usn=models.CharField(max_length=10)
+    semester_number = models.CharField(max_length=50)
+    marks_obtained = models.DecimalField(default=0, max_digits=5, decimal_places=2)
+    total_marks = models.DecimalField(default=0, max_digits=5, decimal_places=2)
+    # Other fields if any...
+
+    def str(self):
+        return f"Semester {self.semester_number}"
