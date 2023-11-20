@@ -1,0 +1,26 @@
+body{
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFE4E1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form {
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+  background-color:#FBAB7E;
+}

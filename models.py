@@ -1,14 +1,8 @@
-
-
-# Create your models here.
+# yourappname/models.py
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Semester(models.Model):
-    usn=models.CharField(max_length=10)
-    semester_number = models.CharField(max_length=50)
-    marks_obtained = models.DecimalField(default=0, max_digits=5, decimal_places=2)
-    total_marks = models.DecimalField(default=0, max_digits=5, decimal_places=2)
-    # Other fields if any...
-
-    def str(self):
-        return f"Semester {self.semester_number}"
+class CustomUser(AbstractUser):
+    # Add any additional fields you want
+    # Example: profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
+    pass

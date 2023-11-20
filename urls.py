@@ -1,7 +1,10 @@
+# yourappname/urls.py
 from django.urls import path
-from . import views
-from .views import add_semester
+from App import views
 
 urlpatterns = [
-    path('add_semester/', views.add_semester, name='add_semester'),
+    path('home/', views.home, name='home'),
+    path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+    # Add other URLs as needed
 ]
