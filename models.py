@@ -1,26 +1,9 @@
+# yourapp/models.py
 from django.db import models
 
-# Create your models here.
-
-#table for personal details stored for users
-class stu_personal_det(models.Model):
-    Name=models.CharField(max_length=300)
-    FatherName=models.CharField(max_length=300)
-    MotherName=models.CharField(max_length=300)
-    Dob=models.DateField()
-    Address=models.CharField(max_length=500)
-    BldGrp=models.CharField(max_length=3)
-    Email=models.EmailField(max_length=100)
-    PhoneNo=models.CharField(max_length=10)
-
-# table for personal details stored for admin
-
-class admin_stu_personal_det(models.Model):
-    Name=models.CharField(max_length=300)
-    FatherName=models.CharField(max_length=300)
-    MotherName=models.CharField(max_length=300)
-    Dob=models.DateField()
-    Address=models.CharField(max_length=500)
-    BldGrp=models.CharField(max_length=3)
-    Email=models.EmailField(max_length=100)
-    PhoneNo=models.CharField(max_length=10)
+class Student(models.Model):
+    tenth_mark_card = models.FileField(upload_to='tenth_marks_card/')
+    twelfth_mark_card = models.FileField(upload_to='twelfth_marks_card/')
+    aadhar_card = models.FileField(upload_to='aadhar_card/')
+    admission_order = models.FileField(upload_to='admission_order/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)

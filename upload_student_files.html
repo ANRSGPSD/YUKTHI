@@ -1,0 +1,148 @@
+<!-- yourapp/templates/upload_student_files.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student File Upload</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff6b6b, #556270);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h2 {
+            color: #ff6b6b;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Style for file input */
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .file-input-label {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .file-input-label:hover {
+            background-color: #45a049;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* End style for file input */
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Student Documents</h2>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_tenth_mark_card">10th Marks Card:</label>
+            <div class="file-input-wrapper">
+                <label class="file-input-label" for="id_tenth_mark_card">Choose File</label>
+                {{ form.tenth_mark_card }}
+                <span class="file-name"></span>
+            </div>
+            
+            <label for="id_twelfth_mark_card">12th Marks Card:</label>
+            <div class="file-input-wrapper">
+                <label class="file-input-label" for="id_twelfth_mark_card">Choose File</label>
+                {{ form.twelfth_mark_card }}
+                <span class="file-name"></span>
+            </div>
+
+            <label for="id_aadhar_card">Aadhar Card:</label>
+            <div class="file-input-wrapper">
+                <label class="file-input-label" for="id_aadhar_card">Choose File</label>
+                {{ form.aadhar_card }}
+                <span class="file-name"></span>
+            </div>
+
+            <label for="id_admission_order">Admission Order:</label>
+            <div class="file-input-wrapper">
+                <label class="file-input-label" for="id_admission_order">Choose File</label>
+                {{ form.admission_order }}
+                <span class="file-name"></span>
+            </div>
+
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        // Update file names for display
+        document.querySelectorAll('input[type="file"]').forEach(function(input) {
+            input.addEventListener('change', function() {
+                var fileName = this.files[0].name;
+                var fileWrapper = this.parentElement.querySelector('.file-name');
+                fileWrapper.textContent = fileName;
+            });
+        });
+    </script>
+</body>
+</html>
+

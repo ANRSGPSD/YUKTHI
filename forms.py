@@ -1,10 +1,8 @@
-# forms.py
-
+# yourapp/forms.py
 from django import forms
-from .models import stu_personal_det
+from .models import Student
 
-class UserDetailsForm(forms.ModelForm):
+class StudentForm(forms.ModelForm):
     class Meta:
-        model = stu_personal_det
-        fields = '__all__'
-        # Add more fields as needed
+        model = Student
+        fields = ['tenth_mark_card', 'twelfth_mark_card', 'aadhar_card', 'admission_order']

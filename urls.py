@@ -1,9 +1,8 @@
-# urls.py
-
+# yourapp/urls.py
 from django.urls import path
-from .views import add_user_details
+from .views import upload_student_files, view_uploaded_file
 
 urlpatterns = [
-    path('add_user/', add_user_details, name='add_user_details'),
-    # Add more URL patterns as needed
+    path('upload/', upload_student_files, name='upload_student_files'),
+    
 ]

@@ -1,41 +1,20 @@
-# views.py
+# yourapp/views.py
+from django.shortcuts import render, redirect,get_object_or_404
+from .forms import StudentForm
+from .models import Student
+from django.http import HttpResponse
 
-from django.shortcuts import render, redirect
-from .forms import UserDetailsForm
-from .models import stu_personal_det,admin_stu_personal_det
 
-# Create your views here.
-def add_user_details(request):
+def upload_student_files(request):
     if request.method == 'POST':
-        form = UserDetailsForm(request.POST)
+        form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
-            # Save data to Table1
-            stu_personal_det_object = stu_personal_det.objects.create(
-                Name=form.cleaned_data['Name'],
-                FatherName=form.cleaned_data['FatherName'],
-                MotherName=form.cleaned_data['MotherName'],
-                Dob=form.cleaned_data['Dob'],
-                Address=form.cleaned_data['Address'],
-                BldGrp=form.cleaned_data['BldGrp'],
-                Email=form.cleaned_data['Email'],
-                PhoneNo=form.cleaned_data['PhoneNo'],
-            )
-
-            # Save data to Table2
-            admin_stu_personal_det_object = admin_stu_personal_det.objects.create(
-                Name=form.cleaned_data['Name'],
-                FatherName=form.cleaned_data['FatherName'],
-                MotherName=form.cleaned_data['MotherName'],
-                Dob=form.cleaned_data['Dob'],
-                Address=form.cleaned_data['Address'],
-                BldGrp=form.cleaned_data['BldGrp'],
-                Email=form.cleaned_data['Email'],
-                PhoneNo=form.cleaned_data['PhoneNo'],
-                
-            )
-
-            return redirect('add_user_details')  # Redirect to a success page
+            form.save()
+            return redirect('upload_student_files')
     else:
-        form = UserDetailsForm()
+        form = StudentForm()
 
-    return render(request, 'add_user_details.html', {'form': form})
+    files = Student.objects.all()
+    return render(request, 'upload_student_files.html', {'form': form, 'files': files})
+# yourapp/views.py (Continued)
+
