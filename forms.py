@@ -1,13 +1,15 @@
-# yourappname/forms.py
+# myapp/forms.py
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
-class SignUpForm(UserCreationForm):
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'password1', 'password2')
+from .models import UserProfile
 
-class LoginForm(AuthenticationForm):
+class UserRegistrationForm(forms.ModelForm):
     class Meta:
-        model = CustomUser
-        fields = ('username', 'password')
+        model = UserProfile
+        fields = ['username', 'password', 'email']
+        widgets = {'password': forms.PasswordInput()}
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
+
+
