@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static '/Userpage/style.css' %}">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
         <title>User page</title>
     </head>
     <body>
+        {% include "navbar.html" %}
         <div class="card-container">
             <div class="card">
             <a href="personaldetails">
@@ -39,4 +40,6 @@
             </div>
         </div>
     </body>
+   
+
 </html>
