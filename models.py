@@ -1,8 +1,10 @@
-# yourappname/models.py
+# myapp/models.py
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 
-class CustomUser(AbstractUser):
-    # Add any additional fields you want
-    # Example: profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
-    pass
+class UserProfile(models.Model):
+    username = models.CharField(max_length=30, unique=True)
+    password = models.CharField(max_length=100)  # Use a more secure method in a real project
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.username
